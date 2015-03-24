@@ -6,6 +6,7 @@
 
 package tron;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -17,11 +18,18 @@ public class Player {
     
     private int currentDirection;
     
-    private ArrayList<Point> path;
+    private Color color;
+    
+    public ArrayList<Point> path;
 
     public Player() {
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    
     public void setCentre(Point centre) {
         this.centre = centre;
     }
@@ -36,6 +44,10 @@ public class Player {
 
     public int getCurrentDirection() {
         return currentDirection;
+    }
+
+    public Color getColor() {
+        return color;
     }
            
     

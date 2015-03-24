@@ -11,7 +11,18 @@ package tron;
  * @author admin
  */
 public class PlayerMotion {
-    public static void move(Player player, int moveAmount){
+    
+    int width;
+    int height;
+
+    public PlayerMotion(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    
+    
+    public Point move(Player player, int moveAmount){
         int playerCurrentDirection = player.getCurrentDirection();
         int playerCentrex = player.getCentre().getCentrex();
         int playerCentrey = player.getCentre().getCentrey();
@@ -20,18 +31,18 @@ public class PlayerMotion {
 			if (playerCentrey>0){
 			playerCentrey-=moveAmount;                        
 			} else {
-				playerCentrey = yourclass.sm.getHeight();
+				playerCentrey = height;
 			}
 			break;
 		case 1:
-			if (playerCentrex < yourclass.sm.getWidth()){
+			if (playerCentrex < width){
 			playerCentrex+=moveAmount;
 			} else {
 				playerCentrex = 0;
 			}
 			break;
 		case 2:
-			if (playerCentrey < yourclass.sm.getHeight()){
+			if (playerCentrey < height){
 			playerCentrey+=moveAmount;
 			} else {
 				playerCentrey = 0;
@@ -41,12 +52,11 @@ public class PlayerMotion {
 			if (playerCentrex>0){
 			playerCentrex-=moveAmount;
 			} else {
-				playerCentrex = yourclass.sm.getWidth();
+				playerCentrex = width;
 			}
 			break;
 		}
         
-        player.getCentre().setCentrex(playerCentrex);
-        player.getCentre().setCentrey(playerCentrey);
+        return new Point(playerCentrex, playerCentrey);
     }
 }
