@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class Core {
+public class Core {
 
 	private static final DisplayMode modes[] = 
 		{
@@ -62,8 +62,16 @@ public abstract class Core {
 		}
 	}
 	
+        public int getSmWidth() {
+            return sm.getWidth();
+        }
+
+        public int getSmHeight() {
+            return sm.getHeight();
+        }
+    
 	public void update(long timePassed){}
 	
-	public abstract void draw(Graphics2D g);
+	public void draw(Graphics2D g) {}
 	
 }
