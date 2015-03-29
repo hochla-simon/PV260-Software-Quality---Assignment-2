@@ -5,9 +5,9 @@
  */
 package tron;
 
-import java.awt.Color;
-import java.awt.Point;
-import java.awt.Window;
+import Engine.Game;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,20 +18,16 @@ import java.util.List;
 public class Tron implements Game {
     
     int MOVE_AMOUNT = 5;
-    List<Player> players;
-    Core core;
+    private final List<Player> players;
     
-    public Tron(Core core) {
-        this.core = core;
+    public Tron() {
         players = new ArrayList();
     }
-    public static void main(String[] args) {
-        tronTest();
-    }
     
-    public void move() {
+    @Override
+    public void move(int screenWidth, int screenHeight) {
         for (Player player: players) {
-            player.moveInCurrentDirection(MOVE_AMOUNT, core.getWidht(), core.getHeight());
+            player.moveInCurrentDirection(MOVE_AMOUNT, screenWidth, screenHeight);
         }
         for (Player player1: players) {
             for (Player player2: players) {
@@ -43,22 +39,87 @@ public class Tron implements Game {
         for (Player player: players) {
             player.addCentreToPath();
         }
-        
-        //draw
     }
-            
-    public static void tronTest() {
-        int centrex1 = 40;
-	int centrey1 = 40;
-	int centrex2 = 600;
-	int centrey2 = 440;
-        
-        Player player1 = new Player(Player.Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE, new ArrayList<Point>());
-        Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, new ArrayList<Point>());
-        
-        Tron tron = new Tron(new Core());
-        
-        tron.players.add(player1);
-        tron.players.add(player2);
+    
+    @Override
+    public void keyPressed(KeyEvent e) {
+            if (players.get(0).getCurrentDirection() != Player.Direction.DOWN) {
+                players.get(0).setCurrentDirection(Player.Direction.DOWN);
+            }
+       
+//            if (e.getKeyCode() == KeyEvent.VK_UP) {
+//            if (currentDirection1 != 2) {
+//                currentDirection1 = 0;
+//            }
+//        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//            if (currentDirection1 != 0) {
+//                currentDirection1 = 2;
+//            }
+//        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+//            if (currentDirection1 != 3) {
+//                currentDirection1 = 1;
+//            }
+//        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+//            if (currentDirection1 != 1) {
+//                currentDirection1 = 3;
+//            }
+//        }
+//        if (e.getKeyCode() == KeyEvent.VK_W) {
+//            if (currentDirection2 != 2) {
+//                currentDirection2 = 0;
+//            }
+//        } else if (e.getKeyCode() == KeyEvent.VK_S) {
+//            if (currentDirection2 != 0) {
+//                currentDirection2 = 2;
+//            }
+//        } else if (e.getKeyCode() == KeyEvent.VK_D) {
+//            if (currentDirection2 != 3) {
+//                currentDirection2 = 1;
+//            }
+//        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+//            if (currentDirection2 != 1) {
+//                currentDirection2 = 3;
+//            }
+//        }
+    }
+    
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    public void keyTyped(KeyEvent arg0) {
+
+    }
+
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    public void mouseEntered(MouseEvent arg0) {
+    }
+
+    public void mouseExited(MouseEvent arg0) {
+    }
+
+    public void mousePressed(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    public void mouseMoved(MouseEvent e) {
+
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+    
+    public void addPlayer(Player player) {
+        players.add(player);
     }
 }

@@ -8,7 +8,9 @@ package tron;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,11 +18,11 @@ import java.util.ArrayList;
  */
 public class Player {
 
-    public Player(Direction currentDirection, Point centre, Color color, ArrayList<Point> path) {
+    public Player(Direction currentDirection, Point centre, Color color) {
         this.currentDirection = currentDirection;
         this.centre = centre;
         this.color = color;
-        this.path = path;
+        path = new ArrayList();
     }
     
     public enum Direction {
@@ -35,20 +37,68 @@ public class Player {
         };
     }
     
-    private Direction currentDirection;
+    //in the final code should be private
+    public Direction currentDirection;
+    private final Point centre;
+    private final Color color;
+
+    public KeyEvent getUP() {
+        return UP;
+    }
+
+    public void setUP(KeyEvent UP) {
+        this.UP = UP;
+    }
+
+    public KeyEvent getDOWN() {
+        return DOWN;
+    }
+
+    public void setDOWN(KeyEvent DOWN) {
+        this.DOWN = DOWN;
+    }
+
+    public KeyEvent getRIGHT() {
+        return RIGHT;
+    }
+
+    public void setRIGHT(KeyEvent RIGHT) {
+        this.RIGHT = RIGHT;
+    }
+
+    public KeyEvent getLEFT() {
+        return LEFT;
+    }
+
+    public void setLEFT(KeyEvent LEFT) {
+        this.LEFT = LEFT;
+    }
+
+    public Direction getCurrentDirection() {
+        return currentDirection;
+    }
+
+    public void setCurrentDirection(Direction currentDirection) {
+        this.currentDirection = currentDirection;
+    }
     
-    private Point centre;
     
-    private Color color;
+    private KeyEvent UP;
     
-    public ArrayList<Point> path;
+    private KeyEvent DOWN;
+    
+    private KeyEvent RIGHT;
+    
+    private KeyEvent LEFT;
+    
+    public List<Point> path;
 
    
     public boolean collidesWith(Player other) {
-        return this.path.contains(other.centre);
+        return path.contains(other.centre);
     }
     
-    public Point moveInCurrentDirection(int moveAmount, int width, int height) {
+    public void moveInCurrentDirection(int moveAmount, int width, int height) {
         switch (currentDirection) {
             case UP:
                 if (centre.y > 0) {
@@ -79,19 +129,18 @@ public class Player {
                 }
                 break;
         }
-
-        return new Point(centre.x, centre.y);
     }
-    
+
     public void addCentreToPath() {
-        path.add(centre);
+        //important to use the new operator
+        path.add(new Point(centre));
     }
     
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
     public Color getColor() {
         return color;
-    }      
+    }   
+
+    public List<Point> getPath() {
+        return path;
+    }
 }
