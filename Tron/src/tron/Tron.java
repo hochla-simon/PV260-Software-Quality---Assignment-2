@@ -5,7 +5,8 @@
  */
 package tron;
 
-import Engine.Game;
+import Engine.IGame;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -15,9 +16,9 @@ import java.util.List;
  *
  * @author Simon
  */
-public class Tron implements Game {
+public class Tron implements IGame {
     
-    int MOVE_AMOUNT = 5;
+    private int MOVE_AMOUNT = 1;
     private final List<Player> players;
     
     public Tron() {
@@ -43,66 +44,28 @@ public class Tron implements Game {
     
     @Override
     public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
         for (Player player: players){
             
-            if(e == player.getDOWN()){
+            if(keyCode == player.getDOWN()){
                 player.turnDown();
             }
             
-            if(e == player.getUP()){
+            if(keyCode == player.getUP()){
                 player.turnUp();
             }
             
-            if(e == player.getLEFT()){
+            if(keyCode == player.getLEFT()){
                 player.turnLeft();
             }
             
-            if(e == player.getRIGHT()){
+            if(keyCode == player.getRIGHT()){
                 player.turnRight();
             }
             
         }
         
-        /**
-            if (players.get(0).getCurrentDirection() != Player.Direction.DOWN) {
-                players.get(0).setCurrentDirection(Player.Direction.DOWN);
-            }
-            **/
-       
-//            if (e.getKeyCode() == KeyEvent.VK_UP) {
-//            if (currentDirection1 != 2) {
-//                currentDirection1 = 0;
-//            }
-//        } elsasde if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-//            if (currentDirection1 != 0) {
-//                currentDirection1 = 2;
-//            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-//            if (currentDirection1 != 3) {
-//                currentDirection1 = 1;
-//            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-//            if (currentDirection1 != 1) {
-//                currentDirection1 = 3;
-//            }
-//        }
-//        if (e.getKeyCode() == KeyEvent.VK_W) {
-//            if (currentDirection2 != 2) {
-//                currentDirection2 = 0;
-//            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_S) {
-//            if (currentDirection2 != 0) {
-//                currentDirection2 = 2;
-//            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_D) {
-//            if (currentDirection2 != 3) {
-//                currentDirection2 = 1;
-//            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_A) {
-//            if (currentDirection2 != 1) {
-//                currentDirection2 = 3;
-//            }
-//        }
+        
     }
     
     public void keyReleased(KeyEvent e) {
@@ -114,7 +77,18 @@ public class Tron implements Game {
     }
 
     public void mouseClicked(MouseEvent e) {
-
+        int keyCode = e.getButton();
+        for (Player player: players){            
+            
+            if(keyCode == player.getLEFT()){
+                player.turnLeftByMouse();
+            }
+            
+            if(keyCode == player.getRIGHT()){
+                player.turnRightByMouse();
+            }
+            
+        }
     }
 
     public void mouseEntered(MouseEvent arg0) {
@@ -137,6 +111,7 @@ public class Tron implements Game {
 
     }
 
+    
     public List<Player> getPlayers() {
         return players;
     }

@@ -19,10 +19,10 @@ public class Core {
                 new DisplayMode(640, 480, 16, 0),};
     private boolean running;
     protected ScreenManager sm;
-    private final Game game;
-    private final Presentation presentation;
+    private final IGame game;
+    private final IPresentation presentation;
 
-    public Core(Game game, Presentation presentation) {
+    public Core(IGame game, IPresentation presentation) {
         this.game = game;
         this.presentation = presentation;
     }
@@ -58,7 +58,7 @@ public class Core {
     public void gameLoop() {
         while (running) {
             game.move(sm.getWidth(), sm.getHeight());
-            presentation.draw(sm);
+            presentation.draw(game, sm);
             sm.update();
 
             try {

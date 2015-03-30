@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author admin
  */
-public class Player {
+public class Player{
 
     public Player(Direction currentDirection, Point centre, Color color) {
         this.currentDirection = currentDirection;
@@ -28,9 +28,9 @@ public class Player {
     public enum Direction {
         UP {
             
-        }, DOWN {
-            
         }, RIGHT {
+            
+        }, DOWN {
             
         }, LEFT {
             
@@ -42,37 +42,34 @@ public class Player {
     private final Point centre;
     private final Color color;
 
-    public KeyEvent getUP() {
+    
+    public void setKeyBoard(int up, int down, int left, int right){
+        this.UP = up;
+        this.DOWN = down;
+        this.LEFT = left;
+        this.RIGHT = right;
+    }
+    
+    public void setMouse(int left, int right){        
+        this.LEFT = left;
+        this.RIGHT = right;
+    }
+    
+    public int getUP() {
         return UP;
     }
 
-    public void setUP(KeyEvent UP) {
-        this.UP = UP;
-    }
-
-    public KeyEvent getDOWN() {
+    public int getDOWN() {
         return DOWN;
     }
 
-    public void setDOWN(KeyEvent DOWN) {
-        this.DOWN = DOWN;
-    }
-
-    public KeyEvent getRIGHT() {
+    public int getRIGHT() {
         return RIGHT;
     }
 
-    public void setRIGHT(KeyEvent RIGHT) {
-        this.RIGHT = RIGHT;
-    }
-
-    public KeyEvent getLEFT() {
+    public int getLEFT() {
         return LEFT;
-    }
-
-    public void setLEFT(KeyEvent LEFT) {
-        this.LEFT = LEFT;
-    }
+    }  
 
     public Direction getCurrentDirection() {
         return currentDirection;
@@ -83,34 +80,68 @@ public class Player {
     }
     
     public void turnDown(){
-        if (this.currentDirection != Direction.DOWN || this.currentDirection != Direction.UP){
+        if (this.currentDirection != Direction.DOWN && this.currentDirection != Direction.UP){
                     this.currentDirection = Direction.DOWN;
                 }
     }
     public void turnUp(){
-        if (this.currentDirection != Direction.DOWN || this.currentDirection != Direction.UP){
+        if (this.currentDirection != Direction.DOWN && this.currentDirection != Direction.UP){
                     this.currentDirection = Direction.UP;
                 }
     }
     public void turnLeft(){
-        if (this.currentDirection != Direction.LEFT || this.currentDirection != Direction.RIGHT){
+        if (this.currentDirection != Direction.LEFT && this.currentDirection != Direction.RIGHT){
                     this.currentDirection = Direction.LEFT;
                 }
     }
     public void turnRight(){
-        if (this.currentDirection != Direction.LEFT || this.currentDirection != Direction.RIGHT){
+        if (this.currentDirection != Direction.LEFT && this.currentDirection != Direction.RIGHT){
                     this.currentDirection = Direction.RIGHT;
                 }
     }
     
+    public void turnLeftByMouse(){
+        switch(this.currentDirection){
+            case UP:
+                this.currentDirection = Direction.LEFT;
+                break;
+            case LEFT:
+                this.currentDirection = Direction.DOWN;
+                break;
+            case DOWN:
+                this.currentDirection = Direction.RIGHT;
+                break;
+            case RIGHT:
+                this.currentDirection = Direction.UP;
+                break;
+        }        
+    }
     
-    private KeyEvent UP;
+    public void turnRightByMouse(){
+        switch(this.currentDirection){
+            case UP:
+                this.currentDirection = Direction.RIGHT;
+                break;
+            case LEFT:
+                this.currentDirection = Direction.UP;
+                break;
+            case DOWN:
+                this.currentDirection = Direction.LEFT;
+                break;
+            case RIGHT:
+                this.currentDirection = Direction.DOWN;
+                break;
+        }        
+    }
     
-    private KeyEvent DOWN;
     
-    private KeyEvent RIGHT;
+    private int UP;
     
-    private KeyEvent LEFT;
+    private int DOWN;
+    
+    private int RIGHT;
+    
+    private int LEFT;
     
     public List<Point> path;
 

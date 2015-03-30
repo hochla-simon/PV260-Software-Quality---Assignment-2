@@ -8,11 +8,19 @@ package Engine;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.List;
+import tron.Player;
 
 /**
  *
  * @author Simon
  */
-public interface Game extends KeyListener, MouseListener, MouseMotionListener {
+public interface IGame extends KeyListener, MouseListener, MouseMotionListener {
     public void move(int screenWidth, int screenHeight);
+    
+    public List<Player> getPlayers();
+    public void addPlayer(Player player);
+    /**
+    * ma byt toto sucatou rozhrania, ako zadeklarovat abstrakneho hraca
+    **/ 
 }

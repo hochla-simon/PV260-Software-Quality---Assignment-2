@@ -1,0 +1,5 @@
+Je v pohode mat konstruktor so siedmimy argumentami?
+Ako idealne nastavovat keyboard u playera?
+
+
+ma byt hrac sucastou rozhrania alebo ma byt sucostou konkretenej implementacie Napr. hry tron
