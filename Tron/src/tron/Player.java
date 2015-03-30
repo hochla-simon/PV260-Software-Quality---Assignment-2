@@ -82,6 +82,27 @@ public class Player {
         this.currentDirection = currentDirection;
     }
     
+    public void turnDown(){
+        if (this.currentDirection != Direction.DOWN || this.currentDirection != Direction.UP){
+                    this.currentDirection = Direction.DOWN;
+                }
+    }
+    public void turnUp(){
+        if (this.currentDirection != Direction.DOWN || this.currentDirection != Direction.UP){
+                    this.currentDirection = Direction.UP;
+                }
+    }
+    public void turnLeft(){
+        if (this.currentDirection != Direction.LEFT || this.currentDirection != Direction.RIGHT){
+                    this.currentDirection = Direction.LEFT;
+                }
+    }
+    public void turnRight(){
+        if (this.currentDirection != Direction.LEFT || this.currentDirection != Direction.RIGHT){
+                    this.currentDirection = Direction.RIGHT;
+                }
+    }
+    
     
     private KeyEvent UP;
     

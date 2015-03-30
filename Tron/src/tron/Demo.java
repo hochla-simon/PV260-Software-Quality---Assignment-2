@@ -8,7 +8,7 @@ package tron;
 import Engine.Core;
 import java.awt.Color;
 import java.awt.Point;
-import java.util.ArrayList;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -28,6 +28,9 @@ public class Demo {
 
         Player player1 = new Player(Player.Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE);
         Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK);
+        
+        //player1.setDOWN(KeyEvent.);
+        
 
         Tron tron = new Tron();
 

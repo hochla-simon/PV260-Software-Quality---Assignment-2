@@ -43,15 +43,37 @@ public class Tron implements Game {
     
     @Override
     public void keyPressed(KeyEvent e) {
+        for (Player player: players){
+            
+            if(e == player.getDOWN()){
+                player.turnDown();
+            }
+            
+            if(e == player.getUP()){
+                player.turnUp();
+            }
+            
+            if(e == player.getLEFT()){
+                player.turnLeft();
+            }
+            
+            if(e == player.getRIGHT()){
+                player.turnRight();
+            }
+            
+        }
+        
+        /**
             if (players.get(0).getCurrentDirection() != Player.Direction.DOWN) {
                 players.get(0).setCurrentDirection(Player.Direction.DOWN);
             }
+            **/
        
 //            if (e.getKeyCode() == KeyEvent.VK_UP) {
 //            if (currentDirection1 != 2) {
 //                currentDirection1 = 0;
 //            }
-//        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//        } elsasde if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 //            if (currentDirection1 != 0) {
 //                currentDirection1 = 2;
 //            }
