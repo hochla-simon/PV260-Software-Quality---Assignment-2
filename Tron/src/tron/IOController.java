@@ -6,10 +6,23 @@
 
 package tron;
 
+import java.util.Map;
+import tron.Player.Direction;
+
 /**
  *
  * @author xorsag2
  */
-public class IOController {
-    
+public abstract class IOController {
+    protected Map<Integer, Player.Direction> keys;
+
+    public Map<Integer, Direction> getKeys() {
+        return keys;
+    }
+
+    public IOController(Map<Integer, Direction> keys) {
+        this.keys = keys;
+    }
+
+    public abstract Direction turn(Direction direction, Integer keyCode);
 }

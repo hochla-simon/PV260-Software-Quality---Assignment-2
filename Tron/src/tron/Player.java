@@ -21,6 +21,7 @@ public class Player{
     private Direction currentDirection;
     private Point centre;
     private final Color color;
+    private IOController ioController;
     private int UP;
 
     private int DOWN;
@@ -77,10 +78,11 @@ public class Player{
         public abstract Point move(int moveAmount, int width, int height, Point centre);
     }
     
-    public Player(Direction currentDirection, Point centre, Color color) {
+    public Player(Direction currentDirection, Point centre, Color color, IOController ioController) {
         this.currentDirection = currentDirection;
         this.centre = centre;
         this.color = color;
+        this.ioController = ioController;
         path = new HashSet();
     }
     
@@ -195,4 +197,13 @@ public class Player{
     public Set<Point> getPath() {
         return path;
     }
+    
+    public void turn(Integer keyCode) {
+        currentDirection = ioController.turn(currentDirection, keyCode);
+    }
+
+    public IOController getIoController() {
+        return ioController;
+    }
+    
 }
