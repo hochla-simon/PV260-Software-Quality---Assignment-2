@@ -18,7 +18,7 @@ import java.awt.Point;
  */
 public class TronPresentation implements IPresentation{
 
-    private Tron tron;
+    private final Tron tron;
     
     public TronPresentation(Tron tron) {
         this.tron = tron;

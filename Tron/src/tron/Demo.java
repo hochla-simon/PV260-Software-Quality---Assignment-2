@@ -6,7 +6,6 @@
 package tron;
 
 import Engine.Core;
-import Engine.IGame;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -34,7 +33,6 @@ public class Demo {
         
         player1.setKeyBoard(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
         player2.setKeyBoard(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D);
-        //player3.setKeyBoard(KeyEvent.VK_HOME, KeyEvent.VK_END, KeyEvent.VK_DELETE, KeyEvent.VK_PAGE_DOWN);
         player3.setMouse(MouseEvent.BUTTON1, MouseEvent.BUTTON3);
         
 

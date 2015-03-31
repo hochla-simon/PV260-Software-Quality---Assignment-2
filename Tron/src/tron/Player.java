@@ -8,9 +8,8 @@ package tron;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -18,30 +17,72 @@ import java.util.List;
  */
 public class Player{
 
+    //in the final code should be private
+    private Direction currentDirection;
+    private Point centre;
+    private final Color color;
+    private int UP;
+
+    private int DOWN;
+
+    private int RIGHT;
+
+    private int LEFT;
+
+    public Set<Point> path;
+    
+    public enum Direction {
+        UP {
+            @Override
+            public Point move(int moveAmount, int width, int height, Point centre) {
+                if (centre.y > 0) {
+                    centre.y -= moveAmount;
+                } else {
+                    centre.y = height;
+                }
+                return centre;
+            }
+        }, RIGHT {
+            @Override
+            public Point move(int moveAmount, int width, int height, Point centre) {
+                if (centre.x < width) {
+                    centre.x += moveAmount;
+                } else {
+                    centre.x = 0;
+                }
+                return centre;
+            }
+        }, DOWN {
+            @Override
+            public Point move(int moveAmount, int width, int height, Point centre) {
+                if (centre.y < height) {
+                    centre.y += moveAmount;
+                } else {
+                    centre.y = 0;
+                }
+                return centre;
+            }
+        }, LEFT {
+            @Override
+            public Point move(int moveAmount, int width, int height, Point centre) {
+                if (centre.x > 0) {
+                    centre.x -= moveAmount;
+                } else {
+                    centre.x = width;
+                }
+                return centre;
+            }
+        };
+
+        public abstract Point move(int moveAmount, int width, int height, Point centre);
+    }
+    
     public Player(Direction currentDirection, Point centre, Color color) {
         this.currentDirection = currentDirection;
         this.centre = centre;
         this.color = color;
-        path = new ArrayList();
+        path = new HashSet();
     }
-    
-    public enum Direction {
-        UP {
-            
-        }, RIGHT {
-            
-        }, DOWN {
-            
-        }, LEFT {
-            
-        };
-    }
-    
-    //in the final code should be private
-    public Direction currentDirection;
-    private final Point centre;
-    private final Color color;
-
     
     public void setKeyBoard(int up, int down, int left, int right){
         this.UP = up;
@@ -134,53 +175,12 @@ public class Player{
         }        
     }
     
-    
-    private int UP;
-    
-    private int DOWN;
-    
-    private int RIGHT;
-    
-    private int LEFT;
-    
-    public List<Point> path;
-
-   
     public boolean collidesWith(Player other) {
         return path.contains(other.centre);
     }
     
     public void moveInCurrentDirection(int moveAmount, int width, int height) {
-        switch (currentDirection) {
-            case UP:
-                if (centre.y > 0) {
-                    centre.y -= moveAmount;
-                } else {
-                    centre.y = height;
-                }
-                break;
-            case RIGHT:
-                if (centre.x < width) {
-                    centre.x += moveAmount;
-                } else {
-                    centre.x = 0;
-                }
-                break;
-            case DOWN:
-                if (centre.y < height) {
-                    centre.y += moveAmount;
-                } else {
-                    centre.y = 0;
-                }
-                break;
-            case LEFT:
-                if (centre.x > 0) {
-                    centre.x -= moveAmount;
-                } else {
-                    centre.x = width;
-                }
-                break;
-        }
+       centre = currentDirection.move(moveAmount, width, height, centre);
     }
 
     public void addCentreToPath() {
@@ -192,7 +192,7 @@ public class Player{
         return color;
     }   
 
-    public List<Point> getPath() {
+    public Set<Point> getPath() {
         return path;
     }
 }
