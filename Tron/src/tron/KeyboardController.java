@@ -33,11 +33,8 @@ public class KeyboardController extends IOController{
             }
             case DOWN: {
                 Direction keyDirection = keys.get(keyCode);
-                if (keyDirection == Direction.LEFT) {
-                    return Direction.RIGHT;
-                }
-                if (keyDirection == Direction.RIGHT) {
-                    return Direction.LEFT;
+                if (keyDirection == Direction.LEFT || keyDirection == Direction.RIGHT) {
+                    return keyDirection;
                 }
                 else {
                     return direction;
@@ -65,11 +62,6 @@ public class KeyboardController extends IOController{
                 return null;
             }
         }
-    }
-
-    @Override
-    public Map<Integer, Direction> getKeys() {
-        return keys;
     }
 }
 

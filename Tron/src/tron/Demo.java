@@ -36,19 +36,30 @@ public class Demo {
         IOController ioController = new MouseController(keys);
         
         Player player1 = new Player(Player.Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE, ioController);
-//        Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK);
-//        Player player3 = new Player(Player.Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray);
         
-        player1.setKeyBoard(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
-//        player2.setKeyBoard(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_A, KeyEvent.VK_D);
-//        player3.setMouse(MouseEvent.BUTTON1, MouseEvent.BUTTON3);
+        keys = new HashMap<>();
+        keys.put(KeyEvent.VK_UP, Direction.UP);
+        keys.put(KeyEvent.VK_DOWN, Direction.DOWN);
+        keys.put(KeyEvent.VK_LEFT, Direction.LEFT);
+        keys.put(KeyEvent.VK_RIGHT, Direction.RIGHT);
+        ioController = new KeyboardController(keys);
         
-
+        Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, ioController);
+        
+        keys = new HashMap<>();
+        keys.put(KeyEvent.VK_W, Direction.UP);
+        keys.put(KeyEvent.VK_S, Direction.DOWN);
+        keys.put(KeyEvent.VK_A, Direction.LEFT);
+        keys.put(KeyEvent.VK_D, Direction.RIGHT);
+        ioController = new KeyboardController(keys);
+        
+        Player player3 = new Player(Player.Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray, ioController);
+        
         Tron tron = new Tron();
 
         tron.addPlayer(player1);
-//        tron.addPlayer(player2);
-//        tron.addPlayer(player3);
+        tron.addPlayer(player2);
+        tron.addPlayer(player3);
         
         TronPresentation presentation = new TronPresentation(tron);
         

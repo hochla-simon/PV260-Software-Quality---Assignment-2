@@ -70,6 +70,4 @@ public class MouseController extends IOController{
             }
         }
     }
-
-    
 }

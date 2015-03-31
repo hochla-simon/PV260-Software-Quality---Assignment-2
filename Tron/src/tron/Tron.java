@@ -45,24 +45,6 @@ public class Tron implements IGame {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-//        for (Player player: players){
-//            
-//            if(keyCode == player.getDOWN()){
-//                player.turnDown();
-//            }
-//            
-//            if(keyCode == player.getUP()){
-//                player.turnUp();
-//            }
-//            
-//            if(keyCode == player.getLEFT()){
-//                player.turnLeft();
-//            }
-//            
-//            if(keyCode == player.getRIGHT()){
-//                player.turnRight();
-//            }
-//        }
         for (Player player: players) {
             if (player.getIoController().getKeys().containsKey(keyCode)) {
                 player.turn(keyCode);
@@ -80,16 +62,6 @@ public class Tron implements IGame {
 
     public void mouseClicked(MouseEvent e) {
         int keyCode = e.getButton();
-//        for (Player player: players){            
-//            
-//            if(keyCode == player.getLEFT()){
-//                player.turnLeftByMouse();
-//            }
-//            
-//            if(keyCode == player.getRIGHT()){
-//                player.turnRightByMouse();
-//            }
-//        }
         for (Player player: players) {
             if (player.getIoController().getKeys().containsKey(keyCode)) {
                 player.turn(keyCode);
