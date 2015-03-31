@@ -24,5 +24,9 @@ public abstract class IOController {
         this.keys = keys;
     }
 
-    public abstract Direction turn(Direction direction, Integer keyCode);
+    public abstract Direction upTurn(Integer keyCode);
+    public abstract Direction downTurn(Integer keyCode);
+    public abstract Direction leftTurn(Integer keyCode);
+    public abstract Direction rightTurn(Integer keyCode);
+    
 }

@@ -10,7 +10,9 @@ import Engine.IGame;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -19,10 +21,10 @@ import java.util.List;
 public class Tron implements IGame {
     
     private final int MOVE_AMOUNT = 1;
-    private final List<Player> players;
+    private final Set<Player> players;
     
     public Tron() {
-        players = new ArrayList();
+        players = new HashSet();
     }
     
     @Override
@@ -89,7 +91,7 @@ public class Tron implements IGame {
 
     }
 
-    public List<Player> getPlayers() {
+    public Set<Player> getPlayers() {
         return players;
     }
     

@@ -15,59 +15,54 @@ public class MouseController extends IOController{
 
     public MouseController(Map<Integer, Player.Direction> keys) {
         super(keys);
+    }    
+    
+    @Override
+    public Player.Direction upTurn(Integer keyCode){
+        Player.Direction keyDirection = keys.get(keyCode);
+        if (keyDirection == Player.Direction.LEFT || keyDirection == Player.Direction.RIGHT) {
+           return keyDirection;
+        }        
+        return Player.Direction.UP;           
     }
     
     @Override
-    public Player.Direction turn(Player.Direction direction, Integer keyCode) {
-        switch(direction) {
-            case UP: {
-                Player.Direction keyDirection = keys.get(keyCode);
-                if (keyDirection == Player.Direction.LEFT || keyDirection == Player.Direction.RIGHT) {
-                    return keyDirection;
-                }
-                else {
-                    return direction;
-                }
-            }
-            case DOWN: {
-                Player.Direction keyDirection = keys.get(keyCode);
-                if (keyDirection == Player.Direction.LEFT) {
-                    return Player.Direction.RIGHT;
-                }
-                if (keyDirection == Player.Direction.RIGHT) {
-                    return Player.Direction.LEFT;
-                }
-                else {
-                    return direction;
-                }
-            }
-            case RIGHT: {
-                Player.Direction keyDirection = keys.get(keyCode);
-                if (keyDirection == Player.Direction.LEFT) {
-                    return Player.Direction.UP;
-                }
-                if (keyDirection == Player.Direction.RIGHT) {
-                    return Player.Direction.DOWN;
-                }
-                else {
-                    return direction;
-                }
-            }
-            case LEFT: {
-                Player.Direction keyDirection = keys.get(keyCode);
-                if (keyDirection == Player.Direction.LEFT) {
-                    return Player.Direction.DOWN;
-                }
-                if (keyDirection == Player.Direction.RIGHT) {
-                    return Player.Direction.UP;
-                }
-                else {
-                    return direction;
-                }
-            }
-            default: {
-                return null;
-            }
+    public Player.Direction downTurn(Integer keyCode){
+        
+        Player.Direction keyDirection = keys.get(keyCode);
+        if (keyDirection == Player.Direction.LEFT) {
+            return Player.Direction.RIGHT;
         }
+        if (keyDirection == Player.Direction.RIGHT) {
+            return Player.Direction.LEFT;
+        }        
+        return Player.Direction.DOWN;                       
     }
+    
+    @Override
+    public Player.Direction leftTurn(Integer keyCode){
+        
+        Player.Direction keyDirection = keys.get(keyCode);
+        if (keyDirection == Player.Direction.LEFT) {
+            return Player.Direction.DOWN;
+        }
+        if (keyDirection == Player.Direction.RIGHT) {
+            return Player.Direction.UP;
+        }        
+        return Player.Direction.LEFT;                       
+    }
+    
+    @Override
+    public Player.Direction rightTurn(Integer keyCode){
+        
+        Player.Direction keyDirection = keys.get(keyCode);
+        if (keyDirection == Player.Direction.LEFT) {
+            return Player.Direction.UP;
+        }
+        if (keyDirection == Player.Direction.RIGHT) {
+            return Player.Direction.DOWN;
+        }        
+        return Player.Direction.RIGHT;                       
+    }
+ 
 }

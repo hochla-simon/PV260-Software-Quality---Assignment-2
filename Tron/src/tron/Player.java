@@ -33,7 +33,13 @@ public class Player{
                     centre.y = height;
                 }
                 return centre;
+            }  
+            
+            @Override
+            public Direction turn(IOController controller, Integer keyCode) {
+                return controller.upTurn(keyCode);
             }
+            
         }, RIGHT {
             @Override
             public Point move(int moveAmount, int width, int height, Point centre) {
@@ -43,6 +49,11 @@ public class Player{
                     centre.x = 0;
                 }
                 return centre;
+            }
+            
+            @Override
+            public Direction turn(IOController controller, Integer keyCode) {
+                return controller.rightTurn(keyCode);
             }
         }, DOWN {
             @Override
@@ -54,6 +65,11 @@ public class Player{
                 }
                 return centre;
             }
+            
+            @Override
+            public Direction turn(IOController controller, Integer keyCode) {
+                return controller.downTurn(keyCode);
+            }
         }, LEFT {
             @Override
             public Point move(int moveAmount, int width, int height, Point centre) {
@@ -64,9 +80,16 @@ public class Player{
                 }
                 return centre;
             }
+            
+            @Override
+            public Direction turn(IOController controller, Integer keyCode) {
+                return controller.leftTurn(keyCode);
+            }
         };
 
         public abstract Point move(int moveAmount, int width, int height, Point centre);
+        
+        public abstract Direction turn(IOController controller, Integer keyCode);
     }
     
     public Player(Direction initialDirection, Point centre, Color color, IOController ioController) {
@@ -106,8 +129,27 @@ public class Player{
         return path;
     }
     
-    public void turn(Integer keyCode) {
-        currentDirection = ioController.turn(currentDirection, keyCode);
+    public void turn(Integer keyCode) {        
+        currentDirection = currentDirection.turn(ioController, keyCode);
+    }
+    
+    
+    public Direction canTurnLeftRight(Integer keyCode){
+        Direction keyDirection = ioController.keys.get(keyCode);
+        if (keyDirection == Direction.LEFT || keyDirection == Direction.RIGHT) {
+            return keyDirection;
+        }
+        return currentDirection;
+             
+    }
+    
+    public Direction canTurnUpDown(Integer keyCode){
+        Direction keyDirection = ioController.keys.get(keyCode);
+        if (keyDirection == Direction.UP || keyDirection == Direction.DOWN) {
+            return keyDirection;
+        }
+        return currentDirection;
+             
     }
 
     public IOController getIoController() {
