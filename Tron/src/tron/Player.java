@@ -29,7 +29,7 @@ public class Player{
 
     private int LEFT;
 
-    public Set<Point> path;
+    private final Set<Point> path;
     
     public enum Direction {
         UP {

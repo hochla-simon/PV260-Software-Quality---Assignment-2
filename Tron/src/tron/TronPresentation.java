@@ -19,6 +19,7 @@ import java.awt.Point;
 public class TronPresentation implements IPresentation{
 
     private final Tron tron;
+    private static final Integer LINE_WIDTH = 5;
     
     public TronPresentation(Tron tron) {
         this.tron = tron;
@@ -32,7 +33,7 @@ public class TronPresentation implements IPresentation{
         for (Player player : tron.getPlayers()) {
             g.setColor(player.getColor());
             for (Point point : player.getPath()) {
-                g.fillRect(point.x, point.y, 1, 1);
+                g.fillRect(point.x, point.y, LINE_WIDTH, LINE_WIDTH);
             }
         }
         g.dispose();

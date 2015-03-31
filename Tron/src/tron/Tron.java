@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Tron implements IGame {
     
-    private int MOVE_AMOUNT = 1;
+    private final int MOVE_AMOUNT = 1;
     private final List<Player> players;
     
     public Tron() {
@@ -62,10 +62,7 @@ public class Tron implements IGame {
             if(keyCode == player.getRIGHT()){
                 player.turnRight();
             }
-            
         }
-        
-        
     }
     
     public void keyReleased(KeyEvent e) {
@@ -87,7 +84,6 @@ public class Tron implements IGame {
             if(keyCode == player.getRIGHT()){
                 player.turnRightByMouse();
             }
-            
         }
     }
 
@@ -111,7 +107,6 @@ public class Tron implements IGame {
 
     }
 
-    
     public List<Player> getPlayers() {
         return players;
     }
