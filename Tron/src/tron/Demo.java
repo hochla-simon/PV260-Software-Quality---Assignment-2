@@ -38,15 +38,15 @@ public class Demo {
         player3.setMouse(MouseEvent.BUTTON1, MouseEvent.BUTTON3);
         
 
-        IGame tron = new Tron();
+        Tron tron = new Tron();
 
         tron.addPlayer(player1);
         tron.addPlayer(player2);
         tron.addPlayer(player3);
         
-        TronPresentation presentation = new TronPresentation();
+        TronPresentation presentation = new TronPresentation(tron);
         
-        Core core = new Core(tron, presentation);
+        Core core = new Core(presentation);
         core.run();
     }
 }

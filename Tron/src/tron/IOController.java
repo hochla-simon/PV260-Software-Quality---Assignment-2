@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Engine;
+
+package tron;
 
 /**
  *
- * @author Simon
+ * @author xorsag2
  */
-public interface IPresentation {
-    public void draw(ScreenManager sm);
-    public IGame getGame();
+public class IOController {
+    
 }

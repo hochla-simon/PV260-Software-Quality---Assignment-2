@@ -22,9 +22,9 @@ public class Core {
     private final IGame game;
     private final IPresentation presentation;
 
-    public Core(IGame game, IPresentation presentation) {
-        this.game = game;
+    public Core(IPresentation presentation) {
         this.presentation = presentation;
+        this.game = presentation.getGame();
     }
 
     public void stop() {
@@ -58,7 +58,7 @@ public class Core {
     public void gameLoop() {
         while (running) {
             game.move(sm.getWidth(), sm.getHeight());
-            presentation.draw(game, sm);
+            presentation.draw(sm);
             sm.update();
 
             try {

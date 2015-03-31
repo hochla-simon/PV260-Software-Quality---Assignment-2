@@ -18,9 +18,14 @@ import java.awt.Point;
  */
 public class TronPresentation implements IPresentation{
 
+    private Tron tron;
     
+    public TronPresentation(Tron tron) {
+        this.tron = tron;
+    }
+
     @Override
-    public void draw(IGame tron, ScreenManager sm) {
+    public void draw( ScreenManager sm) {
         Graphics2D g = sm.getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, sm.getWidth(), sm.getHeight());
@@ -31,5 +36,10 @@ public class TronPresentation implements IPresentation{
             }
         }
         g.dispose();
+    }
+    
+    @Override
+    public IGame getGame() {
+        return tron;
     }
 }
