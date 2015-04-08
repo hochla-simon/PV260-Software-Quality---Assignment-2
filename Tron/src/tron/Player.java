@@ -37,7 +37,14 @@ public class Player{
             
             @Override
             public Direction turn(IOController controller, Integer keyCode) {
-                return controller.upTurn(keyCode);
+                Direction newDirection = controller.keys.get(keyCode);
+                //if (newDirection != Direction.UP)
+                return newDirection == currentDirection.opposite() ? currentDirection : newDirection;
+            }
+            
+            @Override
+            public Direction opposite(){
+                return Direction.DOWN;
             }
             
         }, RIGHT {
@@ -55,6 +62,12 @@ public class Player{
             public Direction turn(IOController controller, Integer keyCode) {
                 return controller.rightTurn(keyCode);
             }
+            
+            @Override
+            public Direction opposite(){
+                return Direction.LEFT;
+            }
+            
         }, DOWN {
             @Override
             public Point move(int moveAmount, int width, int height, Point centre) {
@@ -69,6 +82,11 @@ public class Player{
             @Override
             public Direction turn(IOController controller, Integer keyCode) {
                 return controller.downTurn(keyCode);
+            }
+            
+            @Override
+            public Direction opposite(){
+                return Direction.UP;
             }
         }, LEFT {
             @Override
@@ -85,11 +103,18 @@ public class Player{
             public Direction turn(IOController controller, Integer keyCode) {
                 return controller.leftTurn(keyCode);
             }
+            
+            @Override
+            public Direction opposite(){
+                return Direction.RIGHT;
+            }
         };
 
         public abstract Point move(int moveAmount, int width, int height, Point centre);
         
         public abstract Direction turn(IOController controller, Integer keyCode);
+        
+        public abstract Direction opposite();
     }
     
     public Player(Direction initialDirection, Point centre, Color color, IOController ioController) {
@@ -132,8 +157,31 @@ public class Player{
     public void turn(Integer keyCode) {        
         currentDirection = currentDirection.turn(ioController, keyCode);
     }
+    
+    
+    public Direction canTurnLeftRight(Integer keyCode){
+        Direction keyDirection = ioController.keys.get(keyCode);
+        if (keyDirection == Direction.LEFT || keyDirection == Direction.RIGHT) {
+            return keyDirection;
+        }
+        return currentDirection;
+             
+    }
+    
+    public Direction canTurnUpDown(Integer keyCode){
+        Direction keyDirection = ioController.keys.get(keyCode);
+        if (keyDirection == Direction.UP || keyDirection == Direction.DOWN) {
+            return keyDirection;
+        }
+        return currentDirection;
+             
+    }
 
     public IOController getIoController() {
         return ioController;
+    }
+
+    public void setIoController(IOController ioController) {
+        this.ioController = ioController;
     }
 }
