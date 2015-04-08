@@ -19,7 +19,7 @@ import java.awt.Point;
 public class TronPresentation implements IPresentation{
 
     private final Tron tron;
-    private static final Integer LINE_WIDTH = 5;
+    private static final Integer LINE_WIDTH = 10;
     
     public TronPresentation(Tron tron) {
         this.tron = tron;
