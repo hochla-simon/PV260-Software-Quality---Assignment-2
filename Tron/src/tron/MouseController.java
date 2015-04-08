@@ -6,7 +6,7 @@
 package tron;
 
 import java.util.Map;
-
+import tron.Player.Direction;
 /**
  *
  * @author Simon
@@ -17,52 +17,28 @@ public class MouseController extends IOController{
         super(keys);
     }    
     
-    @Override
-    public Player.Direction upTurn(Integer keyCode){
+    public Player.Direction turn(Player.Direction currentDirection, Integer keyCode) {
         Player.Direction keyDirection = keys.get(keyCode);
-        if (keyDirection == Player.Direction.LEFT || keyDirection == Player.Direction.RIGHT) {
-           return keyDirection;
-        }        
-        return Player.Direction.UP;           
-    }
-    
-    @Override
-    public Player.Direction downTurn(Integer keyCode){
-        
-        Player.Direction keyDirection = keys.get(keyCode);
-        if (keyDirection == Player.Direction.LEFT) {
-            return Player.Direction.RIGHT;
+        Direction direction = null;
+        switch (currentDirection) {
+            case UP: {
+                direction = keyDirection;
+                break;
+            }
+            case DOWN: {
+                direction = keyDirection.opposite();
+                break;
+            }
+            case RIGHT: {
+                direction = keyDirection.getRight();
+                break;
+            }
+            case LEFT: {
+                direction = keyDirection.getLeft();
+                break;
+            }
         }
-        if (keyDirection == Player.Direction.RIGHT) {
-            return Player.Direction.LEFT;
-        }        
-        return Player.Direction.DOWN;                       
+        Direction newDirection = Direction.tryChangeDirectionTo(currentDirection, direction);
+        return newDirection;
     }
-    
-    @Override
-    public Player.Direction leftTurn(Integer keyCode){
-        
-        Player.Direction keyDirection = keys.get(keyCode);
-        if (keyDirection == Player.Direction.LEFT) {
-            return Player.Direction.DOWN;
-        }
-        if (keyDirection == Player.Direction.RIGHT) {
-            return Player.Direction.UP;
-        }        
-        return Player.Direction.LEFT;                       
-    }
-    
-    @Override
-    public Player.Direction rightTurn(Integer keyCode){
-        
-        Player.Direction keyDirection = keys.get(keyCode);
-        if (keyDirection == Player.Direction.LEFT) {
-            return Player.Direction.UP;
-        }
-        if (keyDirection == Player.Direction.RIGHT) {
-            return Player.Direction.DOWN;
-        }        
-        return Player.Direction.RIGHT;                       
-    }
- 
 }

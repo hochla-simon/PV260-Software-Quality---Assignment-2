@@ -23,7 +23,7 @@ public class Player{
     private IOController ioController;
     private final Set<Point> path;
     
-    public enum Direction {
+    public static enum Direction {
         UP {
             @Override
             public Point move(int moveAmount, int width, int height, Point centre) {
@@ -36,15 +36,18 @@ public class Player{
             }  
             
             @Override
-            public Direction turn(IOController controller, Integer keyCode) {
-                Direction newDirection = controller.keys.get(keyCode);
-                //if (newDirection != Direction.UP)
-                return newDirection == currentDirection.opposite() ? currentDirection : newDirection;
+            public Direction opposite(){
+                return Direction.DOWN;
             }
             
             @Override
-            public Direction opposite(){
-                return Direction.DOWN;
+            public Direction getRight(){
+                return Direction.RIGHT;
+            }
+
+            @Override
+            public Direction getLeft() {
+                return Direction.LEFT;
             }
             
         }, RIGHT {
@@ -59,15 +62,19 @@ public class Player{
             }
             
             @Override
-            public Direction turn(IOController controller, Integer keyCode) {
-                return controller.rightTurn(keyCode);
-            }
-            
-            @Override
             public Direction opposite(){
                 return Direction.LEFT;
             }
             
+            @Override
+            public Direction getRight(){
+                return Direction.DOWN;
+            }
+
+            @Override
+            public Direction getLeft() {
+                return Direction.UP;
+            }
         }, DOWN {
             @Override
             public Point move(int moveAmount, int width, int height, Point centre) {
@@ -80,13 +87,18 @@ public class Player{
             }
             
             @Override
-            public Direction turn(IOController controller, Integer keyCode) {
-                return controller.downTurn(keyCode);
+            public Direction opposite(){
+                return Direction.UP;
             }
             
             @Override
-            public Direction opposite(){
-                return Direction.UP;
+            public Direction getRight(){
+                return Direction.LEFT;
+            }
+
+            @Override
+            public Direction getLeft() {
+                return Direction.RIGHT;
             }
         }, LEFT {
             @Override
@@ -100,21 +112,32 @@ public class Player{
             }
             
             @Override
-            public Direction turn(IOController controller, Integer keyCode) {
-                return controller.leftTurn(keyCode);
+            public Direction opposite(){
+                return Direction.RIGHT;
             }
             
             @Override
-            public Direction opposite(){
-                return Direction.RIGHT;
+            public Direction getRight(){
+                return Direction.UP;
+            }
+
+            @Override
+            public Direction getLeft() {
+                return Direction.DOWN;
             }
         };
 
         public abstract Point move(int moveAmount, int width, int height, Point centre);
         
-        public abstract Direction turn(IOController controller, Integer keyCode);
-        
         public abstract Direction opposite();
+        
+        public abstract Direction getRight();
+        
+        public abstract Direction getLeft();
+        
+        public static Direction tryChangeDirectionTo(Direction currentDirection, Direction newDirection) {
+             return (newDirection == currentDirection.opposite()) ? currentDirection : newDirection;
+        }
     }
     
     public Player(Direction initialDirection, Point centre, Color color, IOController ioController) {
@@ -155,7 +178,7 @@ public class Player{
     }
     
     public void turn(Integer keyCode) {        
-        currentDirection = currentDirection.turn(ioController, keyCode);
+        currentDirection = ioController.turn(currentDirection, keyCode);
     }
     
     
