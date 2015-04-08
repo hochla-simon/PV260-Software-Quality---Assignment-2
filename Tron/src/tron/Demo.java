@@ -24,7 +24,7 @@ public class Demo {
         tronTest();
     }
     
-    public static void tronTest() {
+    public static void tronTest() {        
         int centrex1 = 40;
         int centrey1 = 40;
         int centrex2 = 600;
@@ -42,7 +42,7 @@ public class Demo {
         keys2.put(KeyEvent.VK_DOWN, Direction.DOWN);
         keys2.put(KeyEvent.VK_LEFT, Direction.LEFT);
         keys2.put(KeyEvent.VK_RIGHT, Direction.RIGHT);
-        IOController ioController2 = new MouseController(keys2);
+        IOController ioController2 = new KeyboardController(keys2);
         
         Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, ioController2);
         
@@ -51,7 +51,7 @@ public class Demo {
         keys3.put(KeyEvent.VK_S, Direction.DOWN);
         keys3.put(KeyEvent.VK_A, Direction.LEFT);
         keys3.put(KeyEvent.VK_D, Direction.RIGHT);
-        IOController ioController3 = new MouseController(keys3);
+        IOController ioController3 = new KeyboardController(keys3);
         
         Player player3 = new Player(Player.Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray, ioController3);
         

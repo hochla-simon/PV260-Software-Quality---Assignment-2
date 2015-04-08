@@ -136,7 +136,7 @@ public class Player{
         public abstract Direction getLeft();
         
         public static Direction tryChangeDirectionTo(Direction currentDirection, Direction newDirection) {
-             return (newDirection == currentDirection.opposite()) ? currentDirection : newDirection;
+             return (newDirection == currentDirection.opposite()) ? currentDirection : newDirection;           
         }
     }
     

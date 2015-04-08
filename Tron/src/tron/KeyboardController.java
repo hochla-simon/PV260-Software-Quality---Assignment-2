@@ -20,27 +20,9 @@ public class KeyboardController extends IOController{
     }
      
     @Override
-    public Player.Direction turn(Direction currentDirection, Integer keyCode) {Player.Direction keyDirection = keys.get(keyCode);
-        Direction direction = null;
-        switch (currentDirection) {
-            case UP: {
-                direction = keyDirection;
-                break;
-            }
-            case DOWN: {
-                direction = keyDirection.opposite();
-                break;
-            }
-            case RIGHT: {
-                direction = keyDirection;
-                break;
-            }
-            case LEFT: {
-                direction = keyDirection;
-                break;
-            }
-        }
-        Direction newDirection = Direction.tryChangeDirectionTo(currentDirection, direction);
+    public Player.Direction turn(Direction currentDirection, Integer keyCode) {
+        Player.Direction keyDirection = keys.get(keyCode);               
+        Direction newDirection = Direction.tryChangeDirectionTo(currentDirection, keyDirection);        
         return newDirection;
     }
 }
