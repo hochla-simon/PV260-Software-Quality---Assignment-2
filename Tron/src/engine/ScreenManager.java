@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 public class ScreenManager {
 
-    private GraphicsDevice vc;
+    private final GraphicsDevice vc;
 
     public ScreenManager() {
         GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -22,10 +22,10 @@ public class ScreenManager {
     public DisplayMode findFirstCompatibaleMode(DisplayMode[] modes) {
 
         DisplayMode goodModes[] = vc.getDisplayModes();
-        for (int x = 0; x < modes.length; x++) {
-            for (int y = 0; y < goodModes.length; y++) {
-                if (displayModesMatch(modes[x], goodModes[y])) {
-                    return modes[x];
+        for (DisplayMode mode : modes) {
+            for (DisplayMode goodMode : goodModes) {
+                if (displayModesMatch(mode, goodMode)) {
+                    return mode;
                 }
             }
         }

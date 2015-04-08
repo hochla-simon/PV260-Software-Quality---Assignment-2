@@ -6,7 +6,6 @@
 package tron;
 
 import java.util.Map;
-import tron.Direction;
 
 /**
  *
@@ -14,7 +13,6 @@ import tron.Direction;
  */
 public class KeyboardController extends IOController{
     
-
     public KeyboardController(Map<Integer, Direction> keys) {
         super(keys);
     }

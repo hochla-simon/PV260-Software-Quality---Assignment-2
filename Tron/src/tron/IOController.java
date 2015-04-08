@@ -7,7 +7,6 @@
 package tron;
 
 import java.util.Map;
-import tron.Direction;
 
 /**
  *

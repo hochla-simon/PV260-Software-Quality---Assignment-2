@@ -16,10 +16,9 @@ import java.util.Set;
  * @author admin
  */
 public class Player extends GameworldMovable{
-
     
     private final Color color;
-    private IOController ioController;
+    private final IOController ioController;
     private final Set<Point> path;
     
     
@@ -34,6 +33,7 @@ public class Player extends GameworldMovable{
         return path.contains(other.centre);
     }
     
+    @Override
     public void moveInCurrentDirection(int moveAmount, int width, int height) {
        switch (currentDirection) {
             case UP: {

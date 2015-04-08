@@ -12,7 +12,7 @@ import java.awt.Point;
  *
  * @author xorsag2
  */
-public class GameworldMovable {
+public abstract class GameworldMovable {
     protected Direction currentDirection;
     protected Point centre;
 
