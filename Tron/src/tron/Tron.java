@@ -5,7 +5,7 @@
  */
 package tron;
 
-import Engine.IGame;
+import engine.IGame;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;

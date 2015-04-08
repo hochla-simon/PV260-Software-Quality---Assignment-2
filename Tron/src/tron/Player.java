@@ -132,31 +132,8 @@ public class Player{
     public void turn(Integer keyCode) {        
         currentDirection = currentDirection.turn(ioController, keyCode);
     }
-    
-    
-    public Direction canTurnLeftRight(Integer keyCode){
-        Direction keyDirection = ioController.keys.get(keyCode);
-        if (keyDirection == Direction.LEFT || keyDirection == Direction.RIGHT) {
-            return keyDirection;
-        }
-        return currentDirection;
-             
-    }
-    
-    public Direction canTurnUpDown(Integer keyCode){
-        Direction keyDirection = ioController.keys.get(keyCode);
-        if (keyDirection == Direction.UP || keyDirection == Direction.DOWN) {
-            return keyDirection;
-        }
-        return currentDirection;
-             
-    }
 
     public IOController getIoController() {
         return ioController;
-    }
-
-    public void setIoController(IOController ioController) {
-        this.ioController = ioController;
     }
 }

@@ -5,9 +5,9 @@
  */
 package tron;
 
-import Engine.IGame;
-import Engine.IPresentation;
-import Engine.ScreenManager;
+import engine.IGame;
+import engine.IPresentation;
+import engine.ScreenManager;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;

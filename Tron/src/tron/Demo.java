@@ -5,7 +5,7 @@
  */
 package tron;
 
-import Engine.Core;
+import engine.Core;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -30,30 +30,30 @@ public class Demo {
         int centrex2 = 600;
         int centrey2 = 440;
 
-        Map<Integer, Direction> keys = new HashMap<>();
-        keys.put(MouseEvent.BUTTON1, Direction.LEFT);
-        keys.put(MouseEvent.BUTTON3, Direction.RIGHT);
-        IOController ioController = new MouseController(keys);
+        Map<Integer, Direction> keys1 = new HashMap<>();
+        keys1.put(MouseEvent.BUTTON1, Direction.LEFT);
+        keys1.put(MouseEvent.BUTTON3, Direction.RIGHT);
+        IOController ioController1 = new MouseController(keys1);
         
-        Player player1 = new Player(Player.Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE, ioController);
+        Player player1 = new Player(Player.Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE, ioController1);
         
-        keys = new HashMap<>();
-        keys.put(KeyEvent.VK_UP, Direction.UP);
-        keys.put(KeyEvent.VK_DOWN, Direction.DOWN);
-        keys.put(KeyEvent.VK_LEFT, Direction.LEFT);
-        keys.put(KeyEvent.VK_RIGHT, Direction.RIGHT);
-        ioController = new KeyboardController(keys);
+        Map<Integer, Direction> keys2 = new HashMap<>();
+        keys2.put(KeyEvent.VK_UP, Direction.UP);
+        keys2.put(KeyEvent.VK_DOWN, Direction.DOWN);
+        keys2.put(KeyEvent.VK_LEFT, Direction.LEFT);
+        keys2.put(KeyEvent.VK_RIGHT, Direction.RIGHT);
+        IOController ioController2 = new MouseController(keys2);
         
-        Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, ioController);
+        Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, ioController2);
         
-        keys = new HashMap<>();
-        keys.put(KeyEvent.VK_W, Direction.UP);
-        keys.put(KeyEvent.VK_S, Direction.DOWN);
-        keys.put(KeyEvent.VK_A, Direction.LEFT);
-        keys.put(KeyEvent.VK_D, Direction.RIGHT);
-        ioController = new KeyboardController(keys);
+        Map<Integer, Direction> keys3 = new HashMap<>();
+        keys3.put(KeyEvent.VK_W, Direction.UP);
+        keys3.put(KeyEvent.VK_S, Direction.DOWN);
+        keys3.put(KeyEvent.VK_A, Direction.LEFT);
+        keys3.put(KeyEvent.VK_D, Direction.RIGHT);
+        IOController ioController3 = new MouseController(keys3);
         
-        Player player3 = new Player(Player.Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray, ioController);
+        Player player3 = new Player(Player.Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray, ioController3);
         
         Tron tron = new Tron();
 

@@ -1,4 +1,4 @@
-package Engine;
+package engine;
 
 import java.awt.Color;
 import java.awt.DisplayMode;
