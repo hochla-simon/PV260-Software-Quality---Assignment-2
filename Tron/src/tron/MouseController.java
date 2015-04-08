@@ -6,19 +6,19 @@
 package tron;
 
 import java.util.Map;
-import tron.Player.Direction;
+import tron.Direction;
 /**
  *
  * @author Simon
  */
 public class MouseController extends IOController{
 
-    public MouseController(Map<Integer, Player.Direction> keys) {
+    public MouseController(Map<Integer, Direction> keys) {
         super(keys);
     }    
     
-    public Player.Direction turn(Player.Direction currentDirection, Integer keyCode) {
-        Player.Direction keyDirection = keys.get(keyCode);
+    public Direction turn(Direction currentDirection, Integer keyCode) {
+        Direction keyDirection = keys.get(keyCode);
         Direction direction = null;
         switch (currentDirection) {
             case UP: {

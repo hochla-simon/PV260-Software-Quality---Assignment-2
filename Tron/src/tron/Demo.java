@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
-import tron.Player.Direction;
+import tron.Direction;
 
 /**
  *
@@ -35,7 +35,7 @@ public class Demo {
         keys1.put(MouseEvent.BUTTON3, Direction.RIGHT);
         IOController ioController1 = new MouseController(keys1);
         
-        Player player1 = new Player(Player.Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE, ioController1);
+        Player player1 = new Player(Direction.LEFT, new Point(centrex1, centrey1), Color.BLUE, ioController1);
         
         Map<Integer, Direction> keys2 = new HashMap<>();
         keys2.put(KeyEvent.VK_UP, Direction.UP);
@@ -44,7 +44,7 @@ public class Demo {
         keys2.put(KeyEvent.VK_RIGHT, Direction.RIGHT);
         IOController ioController2 = new KeyboardController(keys2);
         
-        Player player2 = new Player(Player.Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, ioController2);
+        Player player2 = new Player(Direction.RIGHT, new Point(centrex2, centrey2), Color.PINK, ioController2);
         
         Map<Integer, Direction> keys3 = new HashMap<>();
         keys3.put(KeyEvent.VK_W, Direction.UP);
@@ -53,7 +53,7 @@ public class Demo {
         keys3.put(KeyEvent.VK_D, Direction.RIGHT);
         IOController ioController3 = new KeyboardController(keys3);
         
-        Player player3 = new Player(Player.Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray, ioController3);
+        Player player3 = new Player(Direction.DOWN, new Point(centrex2, centrey2 + 10), Color.lightGray, ioController3);
         
         Tron tron = new Tron();
 

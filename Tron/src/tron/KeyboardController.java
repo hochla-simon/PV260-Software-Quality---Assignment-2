@@ -6,7 +6,7 @@
 package tron;
 
 import java.util.Map;
-import tron.Player.Direction;
+import tron.Direction;
 
 /**
  *
@@ -20,8 +20,8 @@ public class KeyboardController extends IOController{
     }
      
     @Override
-    public Player.Direction turn(Direction currentDirection, Integer keyCode) {
-        Player.Direction keyDirection = keys.get(keyCode);               
+    public Direction turn(Direction currentDirection, Integer keyCode) {
+        Direction keyDirection = keys.get(keyCode);               
         Direction newDirection = Direction.tryChangeDirectionTo(currentDirection, keyDirection);        
         return newDirection;
     }

@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public class Tron implements IGame {
     
-    private final int MOVE_AMOUNT = 1;
+    private final int MOVE_AMOUNT = 5;
     private final Set<Player> players;
     
     public Tron() {

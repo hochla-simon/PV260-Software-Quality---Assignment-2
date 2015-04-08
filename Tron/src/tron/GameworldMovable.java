@@ -6,42 +6,29 @@
 
 package tron;
 
-import java.awt.Color;
 import java.awt.Point;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  *
- * @author admin
+ * @author xorsag2
  */
-public class Player extends GameworldMovable{
+public class GameworldMovable {
+    protected Direction currentDirection;
+    protected Point centre;
 
-    
-    private final Color color;
-    private IOController ioController;
-    private final Set<Point> path;
-    
-    
-    public Player(Direction initialDirection, Point centre, Color color, IOController ioController) {
-        super(initialDirection, centre);
-        this.color = color;
-        this.ioController = ioController;
-        path = new HashSet();
-    }
-    
-    public boolean collidesWith(Player other) {
-        return path.contains(other.centre);
+    public GameworldMovable(Direction initialDirection, Point centre) {
+        this.currentDirection = initialDirection;
+        this.centre = centre;
     }
     
     public void moveInCurrentDirection(int moveAmount, int width, int height) {
-       switch (currentDirection) {
+        switch (currentDirection) {
             case UP: {
                 if (centre.y > 0) {
                     centre.y -= moveAmount;
                 } else {
                     centre.y = height;
-                }                
+                }
                 break;
             }
             case RIGHT: {
@@ -49,7 +36,7 @@ public class Player extends GameworldMovable{
                     centre.x += moveAmount;
                 } else {
                     centre.x = 0;
-                }                
+                }
                 break;
             }
             case DOWN: {
@@ -71,24 +58,11 @@ public class Player extends GameworldMovable{
         }
     }
 
-    public void addCentreToPath() {
-        //important to use the new operator
-        path.add(new Point(centre));
+    public Direction getCurrentDirection() {
+        return currentDirection;
     }
     
-    public Color getColor() {
-        return color;
-    }   
-
-    public Set<Point> getPath() {
-        return path;
-    }
-    
-    public void turn(Integer keyCode) {        
-        currentDirection = ioController.turn(currentDirection, keyCode);
-    }
-
-    public IOController getIoController() {
-        return ioController;
+    public void setCurrentDirection(Direction currentDirection) {
+        this.currentDirection = currentDirection;
     }
 }

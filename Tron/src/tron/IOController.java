@@ -7,14 +7,14 @@
 package tron;
 
 import java.util.Map;
-import tron.Player.Direction;
+import tron.Direction;
 
 /**
  *
  * @author xorsag2
  */
 public abstract class IOController {
-    protected Map<Integer, Player.Direction> keys;
+    protected Map<Integer, Direction> keys;
 
     public Map<Integer, Direction> getKeys() {
         return keys;
